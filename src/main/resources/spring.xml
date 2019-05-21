@@ -18,6 +18,12 @@
         <constructor-arg  ref="client"/>
         <constructor-arg  ref="eventLogger"/>
     </bean>
+
+
+
+    <bean id="fileEventLogger" class="FileEventLogger"
+
+          init-method="init"/>
 </beans>
 
 
