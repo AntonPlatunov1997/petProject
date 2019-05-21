@@ -17,11 +17,13 @@ public class App {
 
     public static void main(String[] args) {
  ApplicationContext ctx = new ClassPathXmlApplicationContext("spring.xml");
-// App app = (App) ctx.getBean("app");
+
  App app = ctx.getBean(App.class);
 
 
  app.logEvent("Some event for 1");
  app.logEvent("Some event for 2");
+
+
     }
 }
