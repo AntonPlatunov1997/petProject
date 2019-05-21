@@ -11,13 +11,43 @@
         <constructor-arg value="J.Smith"/>
     </bean>
 
+    <bean id="event" class="Event" scope="prototype">
+        <constructor-arg>
+            <bean class="java.util.Date"/>
+        </constructor-arg>
+        <constructor-arg ref="dateFormat"/>
+    </bean>
+
+    <bean id="dateFormat" class="java.text.DateFormat"
+          factory-method="getDateTimeInstance"/>
+
+
+
 
     <bean id="eventLogger" class="ConsoleEventLogger"/>
+
 
     <bean id="app" class="App">
         <constructor-arg  ref="client"/>
         <constructor-arg  ref="eventLogger"/>
     </bean>
+
+
+
+    <bean id="fileEventLogger" class="FileEventLogger"
+          init-method="init">
+    <constructor-arg value="target/events_log.txt"/>
+    </bean>
+
+    <bean id="cacheFileEventLogger" class="CacheFileLogger"
+          destroy-method="destroy"
+   parent="fileEventLogger">
+        <constructor-arg value="5"/>
+    </bean>
+          
+
+           
+   
 </beans>
 
 

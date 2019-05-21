@@ -19,20 +19,20 @@ public class FileEventLogger implements EventLogger {
     public void logEvent(Event event) {
         try {
             FileUtils.writeStringToFile(file, event.toString(), true);
-        }catch (IOException e){
+        } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
-    public void init()throws IOException{
+    public void init() throws IOException {
         this.file = new File(fileName);
-        if(file.exists()&& !file.canWrite()){
-            throw  new IllegalArgumentException("Can't write to file"+ fileName);
-        }else if (!file.exists()){
+        if (file.exists() && !file.canWrite()) {
+            throw new IllegalArgumentException("Can't write to file" + fileName);
+        } else if (!file.exists()) {
             try {
                 file.createNewFile();
-            }catch (Exception e){
-                throw new IllegalArgumentException("can't create file",e);
+            } catch (Exception e) {
+                throw new IllegalArgumentException("can't create file", e);
             }
         }
     }

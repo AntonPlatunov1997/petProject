@@ -10,14 +10,13 @@ public class Event {
     private DateFormat dateFormat;
 
 
-
     public void setMsg(String msg) {
         this.msg = msg;
     }
 
     public Event(Date date, DateFormat df) {
         this.date = date;
-        this.dateFormat= df;
+        this.dateFormat = df;
     }
 
     @Override

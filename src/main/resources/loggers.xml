@@ -4,9 +4,6 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
 
-
-
-
     <bean id="eventLogger" class="ConsoleEventLogger"/>
 
     <bean id="fileEventLogger" class="FileEventLogger"
@@ -19,13 +16,5 @@
           parent="fileEventLogger">
         <constructor-arg value="5"/>
     </bean>
-
-
-
-
-
-
-
-
 
 </beans>

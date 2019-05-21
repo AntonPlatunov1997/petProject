@@ -9,7 +9,8 @@
     <import resource="loggers.xml"/>
 
     <bean id="client" class="Client">
-        <constructor-arg  value="1"/>
+        <property name="greeting" value="Hello there"/>
+        <constructor-arg value="1"/>
         <constructor-arg value="J.Smith"/>
     </bean>
 
@@ -24,22 +25,12 @@
           factory-method="getDateTimeInstance"/>
 
 
-
-
-
-
-
     <bean id="app" class="App">
-        <constructor-arg  ref="client"/>
-        <constructor-arg  ref="eventLogger"/>
+        <constructor-arg ref="client"/>
+        <constructor-arg ref="eventLogger"/>
     </bean>
 
 
-
-          
-
-           
-   
 </beans>
 
 

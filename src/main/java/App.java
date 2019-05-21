@@ -4,10 +4,11 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 public class App {
     Client client;
     EventLogger eventLogger;
-    public void logEvent(String msg){
-        String message = msg.replaceAll(client.getId(),client.getFullName());
 
-       eventLogger.logEvent(message);
+    public void logEvent(String msg) {
+        String message = msg.replaceAll(client.getId(), client.getFullName());
+
+        eventLogger.logEvent(message);
     }
 
     public App(Client client, EventLogger eventLogger) {
@@ -16,13 +17,13 @@ public class App {
     }
 
     public static void main(String[] args) {
- ApplicationContext ctx = new ClassPathXmlApplicationContext("spring.xml");
+        ApplicationContext ctx = new ClassPathXmlApplicationContext("spring.xml");
 
- App app = ctx.getBean(App.class);
+        App app = ctx.getBean(App.class);
 
 
- app.logEvent("Some event for 1");
- app.logEvent("Some event for 2");
+        app.logEvent("Some event for 1");
+        app.logEvent("Some event for 2");
 
 
     }
