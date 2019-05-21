@@ -11,6 +11,7 @@ public class FileEventLogger implements EventLogger {
         this.fileName = fileName;
     }
 
+
     public void logEvent(String msg) {
 
     }
