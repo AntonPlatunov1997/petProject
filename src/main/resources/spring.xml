@@ -6,6 +6,7 @@
  		http://www.springframework.org/schema/beans/spring-beans-3.2.xsd">
 
     <alias name="client" alias="clientAlias"/>
+    <alias name="client" alias="clientAlias"/>
 
     <!--added name for bean-->
     <bean id="client" name="changedClient" class="Client">
