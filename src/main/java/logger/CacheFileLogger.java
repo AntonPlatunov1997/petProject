@@ -1,3 +1,7 @@
+package logger;
+
+import entities.Event;
+
 import java.util.ArrayList;
 import java.util.List;
 

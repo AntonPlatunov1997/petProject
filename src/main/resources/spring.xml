@@ -8,13 +8,13 @@
 
     <import resource="loggers.xml"/>
 
-    <bean id="client" class="Client">
+    <bean id="client" class="entities.Client">
         <property name="greeting" value="Hello there"/>
         <constructor-arg value="1"/>
         <constructor-arg value="J.Smith"/>
     </bean>
 
-    <bean id="event" class="Event" scope="prototype">
+    <bean id="event" class="entities.Event" scope="prototype">
         <constructor-arg>
             <bean class="java.util.Date"/>
         </constructor-arg>
@@ -25,9 +25,25 @@
           factory-method="getDateTimeInstance"/>
 
 
+
+
+
+    <!--<bean id="app" class="App">-->
+        <!--<constructor-arg ref="client"/>-->
+        <!--<constructor-arg ref="eventLogger"/>-->
+    <!--</bean>-->
+
     <bean id="app" class="App">
         <constructor-arg ref="client"/>
-        <constructor-arg ref="eventLogger"/>
+        <constructor-arg ref="consoleEventLogger"/>
+      <constructor-arg>
+          <map>
+              <entry key="INFO"
+                     value-ref="consoleEventLogger"/>
+              <entry key="ERROR"
+                     value-ref="combinedEventLogger"/>
+          </map>
+      </constructor-arg>
     </bean>
 
 

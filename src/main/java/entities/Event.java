@@ -1,3 +1,5 @@
+package entities;
+
 import java.text.DateFormat;
 import java.util.Date;
 import java.util.concurrent.atomic.AtomicInteger;
@@ -21,7 +23,7 @@ public class Event {
 
     @Override
     public String toString() {
-        final StringBuffer sb = new StringBuffer("Event{");
+        final StringBuffer sb = new StringBuffer("entities.Event{");
         sb.append("id=").append(id);
         sb.append(", msg='").append(msg).append('\'');
         sb.append(", date=").append(date);

@@ -1,3 +1,5 @@
+package entities;
+
 public class Client {
     private String id;
     private String fullName;
