@@ -1,7 +1,10 @@
 package logger;
 
 import entities.Event;
+import org.springframework.stereotype.Component;
 
+
+@Component
 public class ConsoleEventLogger implements EventLogger {
     public void logEvent(String msg) {
         System.out.println(msg);

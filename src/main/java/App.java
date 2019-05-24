@@ -1,16 +1,25 @@
+import config.AppConfig;
 import entities.Client;
 import entities.Event;
 import entities.EventType;
 import logger.EventLogger;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ConfigurableApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import java.util.Map;
 
 public class App {
+    @Autowired
     Client client;
+
+    @Qualifier("consoleEventLogger")
+    @Autowired
     EventLogger eventLogger;
+    @Autowired
     Map<EventType, EventLogger> loggers;
 
 
@@ -37,7 +46,11 @@ public class App {
     }
 
     public static void main(String[] args) {
-        ConfigurableApplicationContext ctx = new ClassPathXmlApplicationContext("spring.xml");
+
+        ApplicationContext ctx = new AnnotationConfigApplicationContext(
+                AppConfig.class);
+
+       // ConfigurableApplicationContext ctx = new ClassPathXmlApplicationContext("spring.xml");
         App app = ctx.getBean(App.class);
         Event event = ctx.getBean(Event.class);
 
@@ -49,7 +62,7 @@ public class App {
         event = ctx.getBean(Event.class);
         app.logEvent(null, event, "Some event for 3");
 
-        ctx.close();
+
 
 
     }

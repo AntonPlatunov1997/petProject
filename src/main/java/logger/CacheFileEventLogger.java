@@ -2,18 +2,31 @@ package logger;
 
 import entities.Event;
 
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Component;
+
+import javax.annotation.PostConstruct;
+import javax.annotation.PreDestroy;
 import java.util.ArrayList;
 import java.util.List;
 
-public class CacheFileLogger extends FileEventLogger {
+
+@Component
+public class CacheFileEventLogger extends FileEventLogger {
+    @Value("${cache.size:5}")
     private int cacheSize;
     private List<Event> cache;
     private FileEventLogger fileEventLogger;
 
-    public CacheFileLogger(String filename, int cacheSize) {
+
+
+
+    public CacheFileEventLogger() {
+    }
+
+    public CacheFileEventLogger(String filename, int cacheSize) {
         super(filename);
         this.cacheSize = cacheSize;
-        this.cache = new ArrayList<Event>(cacheSize);
     }
 
     @Override
@@ -32,6 +45,12 @@ public class CacheFileLogger extends FileEventLogger {
         }
     }
 
+
+    @PostConstruct
+    public void init(){
+        this.cache = new ArrayList<Event>(cacheSize);
+    }
+    @PreDestroy
     public void destroy() {
         if (!cache.isEmpty()) {
             writeEventsFromCache();

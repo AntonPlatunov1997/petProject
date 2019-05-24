@@ -1,9 +1,14 @@
 package entities;
 
+import org.springframework.stereotype.Component;
+
 import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.concurrent.atomic.AtomicInteger;
 
+
+@Component
 public class Event {
 
     private static final AtomicInteger id = new AtomicInteger(0);
@@ -14,6 +19,21 @@ public class Event {
 
     public void setMsg(String msg) {
         this.msg = msg;
+    }
+
+    public static boolean isDay() {
+        Date date = new Date();
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("HH");
+        Integer time = Integer.valueOf(simpleDateFormat.format(date));
+
+        if (8<time&& time<17){
+            return true;
+        }else{
+            return false;
+        }
+    }
+
+    public Event() {
     }
 
     public Event(Date date, DateFormat df) {
